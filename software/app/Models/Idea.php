@@ -14,6 +14,6 @@ class Idea extends Model
     use HasFactory;
 
     public function comments() {
-        return $this->hasMany(Comment::class)->orderBy('created_at', 'DESC');
+        return $this->hasMany(Comment::class, 'idea_id', 'id')->orderBy('created_at', 'DESC');
     }
 }
