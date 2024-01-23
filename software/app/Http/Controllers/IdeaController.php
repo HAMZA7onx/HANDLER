@@ -29,7 +29,6 @@ class IdeaController extends Controller
         $validated = request()->validate([
             'content' => 'required|min:5|max:200',
         ]);
-        $validated['user_id'] = auth()->id();
         $idea->update($validated);
 
         return redirect()->route('ideas.show', $idea->id)->with('success', 'Idea was updated successfully');
