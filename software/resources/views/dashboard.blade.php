@@ -9,9 +9,11 @@
             @include('shared.submit-idea')
             <hr>
             <div class="mt-3">
-                @foreach($ideas as $idea)
+                @forelse($ideas as $idea)
                     @include('shared.idea-card')
-                @endforeach
+                @empty
+                    <div class="text-center my-2">No matching search data</div>
+                @endforelse
                 {{ $ideas->links() }}
             </div>
         </div>

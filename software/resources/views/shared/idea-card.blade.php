@@ -11,6 +11,7 @@
             </div>
             <div>
 {{--                @auth--}}
+                @if(auth()->id() == $idea->user->id)
                     <form action="{{ route('ideas.destroy', $idea->id) }}" method="post">
                         @csrf
                         @method('delete')
@@ -21,6 +22,9 @@
                             X
                         </button>
                     </form>
+                @else
+                    <a href="{{ route('ideas.show', $idea->id) }}">view</a>
+                @endif
 {{--                @endauth--}}
             </div>
         </div>
