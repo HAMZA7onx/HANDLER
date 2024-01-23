@@ -16,4 +16,10 @@ class IdeaController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function destroy(Idea $idea) {
+        $idea->delete();
+
+        return redirect()->route('dashboard');
+    }
 }

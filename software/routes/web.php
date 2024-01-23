@@ -20,3 +20,4 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::post('/ideas', [IdeaController::class, 'store'])->name('ideas.store');
 
+Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
