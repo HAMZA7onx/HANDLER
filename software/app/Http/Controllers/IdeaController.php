@@ -20,15 +20,17 @@ class IdeaController extends Controller
         $validated = request()->validate([
             'content' => 'required|min:4',
         ]);
+        $validated['user_id'] = auth()->id();
         Idea::create($validated);
         return redirect()->route('dashboard')->with('success', 'Idea was created successfully');
     }
 
     public function update(Idea $idea) {
+        dd(auth()->id());
         $validated = request()->validate([
             'content' => 'required|min:5|max:200',
         ]);
-
+        $validated['user_id'] = auth()->id();
         $idea->update($validated);
 
         return redirect()->route('ideas.show', $idea->id)->with('success', 'Idea was updated successfully');
