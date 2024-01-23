@@ -13,6 +13,9 @@
                 <form action="{{ route('ideas.destroy', $idea->id) }}" method="post">
                     @csrf
                     @method('delete')
+                    <a href="{{ route('ideas.show', $idea->id) }}">view</a>
+                    <a class="mx-2" href="{{ route('ideas.edit', $idea->id) }}">edit</a>
+
                     <button class="btn btn-danger">
                         X
                     </button>
@@ -22,7 +25,24 @@
     </div>
     <div class="card-body">
         <p class="fs-6 fw-light text-muted">
-            {{ $idea->content }}
+            @if($editing ?? null)
+             <form action=" {{ route('ideas.update', $idea->id) }}" method="post">
+                 @csrf
+                 @method('put')
+                 <div class="mb-3">
+                     <textarea name="content" class="form-control" id="idea" rows="3"> {{ $idea->content }} </textarea>
+                     <div class="text-danger">
+                         @error('content')
+                         {{ $message }}
+                         @enderror
+                     </div>
+                 </div>
+                 <button type="submit">Update idea</button>
+             </form>
+            @else
+                {{ $idea->content }}
+            @endif
+
         </p>
         <div class="d-flex justify-content-between">
             <div>
