@@ -31,7 +31,7 @@ class IdeaController extends Controller
 
         $idea->update($validated);
 
-        return view('ideas.show', compact('idea'))->with('success', 'Idea was updated successfully');
+        return redirect()->route('ideas.show', $idea->id)->with('success', 'Idea was updated successfully');
     }
 
     public function destroy(Idea $idea) {
