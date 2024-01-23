@@ -12,6 +12,16 @@ class AuthController extends Controller
     }
 
     public function store() {
+        $validated = request()->validate([
+            'name' => 'required|min:5|max:50',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed'
+        ]);
 
+        $validated['password'] = bcrypt($validated['password']);
+
+        User::create($validated);
+
+        return redirect()->route('register')->with('success', 'Rigister Have been successfully');
     }
 }
