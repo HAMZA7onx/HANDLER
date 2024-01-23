@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IdeaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,6 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'index']);
 
-Route::post('/', [DashboardController::class, 'store'])->name('store');
+Route::post('/', [IdeaController::class, 'store'])->name('ideas.store');
