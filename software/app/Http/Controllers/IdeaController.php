@@ -26,7 +26,6 @@ class IdeaController extends Controller
     }
 
     public function update(Idea $idea) {
-        dd(auth()->id());
         $validated = request()->validate([
             'content' => 'required|min:5|max:200',
         ]);

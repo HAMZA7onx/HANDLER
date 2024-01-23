@@ -17,4 +17,8 @@ class Idea extends Model
     public function comments() {
         return $this->hasMany(Comment::class, 'idea_id', 'id')->orderBy('created_at', 'DESC');
     }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
