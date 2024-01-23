@@ -11,7 +11,11 @@
 
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="nav-link active" aria-current="page">Logout</button>
+                        </form>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/profile"> {{ auth()->user()->name }} </a>
