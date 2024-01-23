@@ -12,4 +12,8 @@ class Idea extends Model
         'likes',
     ];
     use HasFactory;
+
+    public function comments() {
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'DESC');
+    }
 }
