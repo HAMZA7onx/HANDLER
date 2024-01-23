@@ -7,5 +7,11 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-//    public function
+    public function register() {
+        return view('auth.register');
+    }
+
+    public function store() {
+        
+    }
 }
