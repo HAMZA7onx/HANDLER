@@ -14,7 +14,6 @@ class IdeaController extends Controller
 
         Idea::create($validated);
 
-        $ideas = Idea::orderBy('created_at', 'DESC')->paginate(3);
-        return view('dashboard', compact('ideas'));
+        return redirect()->route('dashboard');
     }
 }
