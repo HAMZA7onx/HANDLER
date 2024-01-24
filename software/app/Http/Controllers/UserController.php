@@ -16,6 +16,10 @@ class UserController extends Controller
         return view('users.show', compact('user', 'ideas'));
     }
 
+    public function profile(User $user) {
+        return redirect()->route('users.show', $user->id);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

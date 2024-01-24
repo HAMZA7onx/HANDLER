@@ -53,3 +53,5 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.e
 
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
 
+/* Profile route */
+Route::get('/profile/{user}', [UserController::class, 'profile'])->name('profile')->middleware('auth');

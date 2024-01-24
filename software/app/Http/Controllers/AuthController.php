@@ -15,7 +15,9 @@ class AuthController extends Controller
         $validated = request()->validate([
             'name' => 'required|min:5|max:50',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bio' => 'required|min:20|max:200'
         ]);
 
         $validated['password'] = bcrypt($validated['password']);

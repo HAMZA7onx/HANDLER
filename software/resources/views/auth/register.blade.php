@@ -41,6 +41,24 @@
                         @enderror
                     </div>
                 </div>
+                <div class="form-group mt-3">
+                    <label for="image" class="text-dark">Uploade image:</label><br>
+                    <input type="file" name="image" id="image" class="form-control">
+                    <div class="text-danger">
+                        @error('image')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="bio" class="text-dark">Bio:</label><br>
+                    <textarea type="text" name="bio" id="bio" class="form-control"></textarea>
+                    <div class="text-danger">
+                        @error('bio')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="remember-me" class="text-dark"></label><br>
                     <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
