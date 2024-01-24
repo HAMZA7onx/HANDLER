@@ -47,8 +47,9 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /* users route */
-Route::get('/users/{user}', [UserController::class, 'profile'])->name('users.show')->middleware('auth');
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
 
-Route::get('/users/{user}/edit', [UserController::class, 'profile'])->name('users.edit')->middleware('auth');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
 
-Route::put('/users/{user}', [UserController::class, 'profile'])->name('users.update')->middleware('auth');
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+
