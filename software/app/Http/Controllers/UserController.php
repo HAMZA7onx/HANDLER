@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+
 class UserController extends Controller
 {
     /**
@@ -43,6 +43,8 @@ class UserController extends Controller
         if(request()->hasFile('image')) {
             $imagePath = request()->file('image')->store('images', 'public');
             $validated['image'] = $imagePath;
+
+            Storage::disk('public')->delete($user->image);
         }
 
         $user->update($validated);
