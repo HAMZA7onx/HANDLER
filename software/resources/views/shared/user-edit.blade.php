@@ -1,4 +1,4 @@
-<form action="{{ route('users.update', $user->id) }}" method="post">
+<form action="{{ route('users.update', $user->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('put')
     <div class="card">
@@ -10,7 +10,8 @@
                     <div>
                         <input value="{{ $user->name }}" name="name" type="text" class="form-group">
                         <div class="text-danger">
-                            @error('bio')
+                            @error('image')
+                            {{ $message }}
                             @enderror
                         </div>
                     </div>
@@ -32,9 +33,10 @@
 
             <div class="px-2 mt-4">
                 <h5 class="fs-5"> Bio : </h5>
-                <textarea value="{{ $user->biko }}" name="bio" type="text" class="fs-6 fw-light"></textarea>
+                <textarea name="bio" type="text" class="fs-6 fw-light">{{ $user->bio }}</textarea>
                 <div class="text-danger">
-                    @error('bio')
+                    @error('image')
+                    {{ $message }}
                     @enderror
                 </div>
 

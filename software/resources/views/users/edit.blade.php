@@ -8,7 +8,7 @@
             @include('shared.success-message')
             <hr>
             <div class="mt-3">
-                @include('shared.user-edit');
+                @include('shared.user-edit')
             </div>
             @foreach($ideas as $idea)
                 @include('shared.idea-card')

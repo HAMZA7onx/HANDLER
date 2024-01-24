@@ -34,7 +34,20 @@ class UserController extends Controller
      */
     public function update(User $user)
     {
-        //
+        $validated = request()->validate([
+            'name' => 'required|min:5|max:50',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bio' => 'required|min:5|max:200'
+        ]);
+
+        if(request()->hasFile('image')) {
+            $imagePath = request()->file('image')->store('images', 'public');
+            $validated['image'] = $imagePath;
+        }
+
+        $user->update($validated);
+
+        return redirect()->route('profile', $user->id)->with('success', 'Profile have been updated successfully');
     }
 
 }
