@@ -10,6 +10,10 @@
             <div class="mt-3">
                 @include('shared.user-card')
             </div>
+            @foreach($ideas as $idea)
+                @include('shared.idea-card')
+            @endforeach
+            {{ $ideas->links() }}
         </div>
         <div class="col-3">
             @include('shared.search-bar')

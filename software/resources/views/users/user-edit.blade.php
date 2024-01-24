@@ -30,6 +30,17 @@
                                     <a href="{{ route('users.show', auth()->id()) }}">view</a>
                                 </div>
                             </div>
+
+                            <div class="form-group mt-3">
+                                <label for="image" class="text-dark">Uploade image:</label><br>
+                                <input type="file" name="image" id="image" class="form-control">
+                                <div class="text-danger">
+                                    @error('image')
+                                    {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="px-2 mt-4">
                                 <h5 class="fs-5"> Bio : </h5>
                                 <textarea value="{{ $user->biko }}" name="bio" type="text" class="fs-6 fw-light"></textarea>
@@ -61,11 +72,11 @@
                 </form>
 
             {{--    --}}
-            </div>
-            @foreach($ideas as $idea)
-                @include('shared.idea-card')
-            @endforeach
-            {{ $ideas->links() }}
+                </div>
+                @foreach($ideas as $idea)
+                    @include('shared.idea-card')
+                @endforeach
+                {{ $ideas->links() }}
         </div>
 
         <div class="col-3">

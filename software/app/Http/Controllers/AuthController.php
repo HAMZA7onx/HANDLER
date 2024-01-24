@@ -22,6 +22,10 @@ class AuthController extends Controller
 
         $validated['password'] = bcrypt($validated['password']);
 
+        if(request()->hasFile('image')) {
+            $imagePath = request()->file('image')->store('images', 'public');
+            $validated['image'] = $imagePath;
+        }
         User::create($validated);
 
         return redirect()->route('dashboard')->with('success', 'Rigister Has been successfully');
