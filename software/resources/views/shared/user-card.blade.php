@@ -10,6 +10,11 @@
                     <span class="fs-6 text-muted">{{ $user->email }}</span>
                 </div>
             </div>
+            <div>
+                @if(auth()->id() == $user->id)
+                    <a href="{{ route('users.edit', auth()->id()) }}">edit</a>
+                @endif
+            </div>
         </div>
         <div class="px-2 mt-4">
             <h5 class="fs-5"> About : </h5>
@@ -26,9 +31,12 @@
                 <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-comment me-1">
                                     </span> {{ count($user->comments) }} </a>
             </div>
-            <div class="mt-3">
-                <button class="btn btn-primary btn-sm"> Follow </button>
-            </div>
+
+            @if(auth()->id() != $user->id)
+                <div class="mt-3">
+                    <button class="btn btn-primary btn-sm"> Follow </button>
+                </div>
+            @endif
         </div>
     </div>
 </div>

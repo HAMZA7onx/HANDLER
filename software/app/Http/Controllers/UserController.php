@@ -12,7 +12,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $ideas = $user->ideas()->orderBy('created_at', 'DESC')->paginate(1);
+        return view('users.show', compact('user', 'ideas'));
     }
 
     /**
@@ -20,7 +21,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $ideas = $user->ideas()->orderBy('created_at', 'DESC')->paginate(1);
+        return view('users.edit', compact('user', 'ideas'));
     }
 
     /**
