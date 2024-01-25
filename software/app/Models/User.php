@@ -59,4 +59,15 @@ class User extends Authenticatable
         }
         return "https://api.dicebear.com/6.x/fun-emoji/svg?seed={$this->name}";
     }
+
+    // people that we are following
+    public function followings() {
+        return $this->belongsToMany(User::class, 'follower_user', 'follower_id', 'user_id')->withTimestamps();
+    }
+
+    // people that following us
+    public function followers() {
+        return $this->belongsToMany(User::class, 'follower_user', 'user_id', 'follower_id')->withTimestamps();
+    }
+    /* we added withTimestamps() function here because Laravel don't return timestamps of the pivot tables */
 }
