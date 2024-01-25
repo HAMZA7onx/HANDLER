@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
+
+/* to handle email */
 use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeEmail;
 
 class AuthController extends Controller
 {
