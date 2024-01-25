@@ -32,7 +32,12 @@
 
             @if(auth()->id() != $user->id)
                 <div class="mt-3">
-                    <button class="btn btn-primary btn-sm"> Follow </button>
+
+                    <form action="{{ route('users.follow', $user->id) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-primary btn-sm"> Follow </button>
+                    </form>
+
                 </div>
             @endif
         </div>

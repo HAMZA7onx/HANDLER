@@ -6,11 +6,14 @@ use App\Models\User;
 
 class FollowerController extends Controller
 {
-    public function follow() {
+    public function follow(User $user) {
+        $follower = auth()->user();
+        $follower->followings()->attach($user);
 
+        return redirect()->route('users.show', $user->id)->with('success', 'Followed successfully');
     }
 
     public function unfollow() {
-        
+
     }
 }
