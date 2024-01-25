@@ -6,7 +6,9 @@ use App\Models\User;
 
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Mail\Attachable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -56,6 +58,9 @@ class WelcomeEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromStorageDisk('public','images/5eX0umeRMsr0QsGPNYHeSaOxjEVgQyhdxwTcGfm5.jpg'),
+            Attachment::fromStorageDisk('public','images/5u3zrR6D657YciTCUmrMXEZxjl4JpbvvGiQr7lof.jpg')
+        ];
     }
 }
