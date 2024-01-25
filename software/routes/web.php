@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\IdeaLikeController;
 use App\Http\Controllers\FeedController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,3 +72,5 @@ Route::post('/ideas/{idea}/unlike', [IdeaLikeController::class, 'unlike'])->midd
 /* feed route */
 Route::get('/feed', FeedController::class)->middleware('auth')->name('feed');
 
+/* admin route */
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');

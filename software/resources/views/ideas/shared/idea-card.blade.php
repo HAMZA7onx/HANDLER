@@ -5,12 +5,13 @@
                 <img style="width:50px" class="me-2 avatar-sm rounded-circle"
                      src="{{ $idea->user->getImageURL() }}" alt="{{ $idea->user->name }} Avatar">
                 <div>
-                    <h5 class="card-title mb-0"><a href="{{ route('users.show', $idea->user->id) }}"> {{ $idea->user->name }}
+                    <h5 class="card-title mb-0"><a
+                            href="{{ route('users.show', $idea->user->id) }}"> {{ $idea->user->name }}
                         </a></h5>
                 </div>
             </div>
             <div>
-{{--                @auth--}}
+                {{--                @auth--}}
                 @if(auth()->id() == $idea->user->id)
                     <form action="{{ route('ideas.destroy', $idea->id) }}" method="post">
                         @csrf
@@ -25,40 +26,40 @@
                 @else
                     <a href="{{ route('ideas.show', $idea->id) }}">view</a>
                 @endif
-{{--                @endauth--}}
+                {{--                @endauth--}}
             </div>
         </div>
     </div>
     <div class="card-body">
         <p class="fs-6 fw-light text-muted">
-            @if($editing ?? null)
-             <form action=" {{ route('ideas.update', $idea->id) }}" method="post">
-                 @csrf
-                 @method('put')
-                 <div class="mb-3">
-                     <textarea name="content" class="form-control" id="idea" rows="3"> {{ $idea->content }} </textarea>
-                     <div class="text-danger">
-                         @error('content')
-                         {{ $message }}
-                         @enderror
-                     </div>
-                 </div>
-                 <button type="submit">Update idea</button>
-             </form>
+        @if($editing ?? null)
+            <form action=" {{ route('ideas.update', $idea->id) }}" method="post">
+                @csrf
+                @method('put')
+                <div class="mb-3">
+                    <textarea name="content" class="form-control" id="idea" rows="3"> {{ $idea->content }} </textarea>
+                    <div class="text-danger">
+                        @error('content')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                </div>
+                <button type="submit">Update idea</button>
+            </form>
             @else
                 {{ $idea->content }}
             @endif
 
-        </p>
-        <div class="d-flex justify-content-between">
-           @include('ideas.shared.like-button')
-            <div>
+            </p>
+            <div class="d-flex justify-content-between">
+                @include('ideas.shared.like-button')
+                <div>
                 <span class="fs-6 fw-light text-muted">
                     <span class="fas fa-clock"> </span>
                     {{ $idea->created_at->diffForHumans() }}
                 </span>
+                </div>
             </div>
-        </div>
     </div>
-    @include('shared.comments-box')
+    @include('ideas.shared.comments-box')
 </div>
