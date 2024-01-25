@@ -61,3 +61,8 @@ Route::get('/profile/{user}', [UserController::class, 'profile'])->name('profile
 Route::post('/users/{user}/follow', [FollowerController::class, 'follow'])->middleware('auth')->name('users.follow');
 
 Route::post('/users/{user}/unfollow', [FollowerController::class, 'unfollow'])->middleware('auth')->name('users.unfollow');
+
+/* likes route */
+Route::post('/ideas/{idea}/like', [FollowerController::class, 'like'])->middleware('auth')->name('ideas.like');
+
+Route::post('/ideas/{idea}/unlike', [FollowerController::class, 'unlike'])->middleware('auth')->name('ideas.unlike');
