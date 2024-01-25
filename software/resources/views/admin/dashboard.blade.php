@@ -1,4 +1,4 @@
 @extends('layout.layout')
 @section('content')
-   <h>Admin Panel</h>
+   <h1>Admin Panel</h1>
 @endsection
