@@ -11,7 +11,7 @@
                 @include('shared.user-card')
             </div>
             @foreach($ideas as $idea)
-                @include('shared.idea-card')
+                @include('ideas.shared.idea-card')
             @endforeach
             {{ $ideas->links() }}
         </div>

@@ -78,4 +78,8 @@ class User extends Authenticatable
     public function likes() {
         return $this->belongsToMany(Idea::class, 'idea_like', 'user_id', 'idea_id')->withTimestamps();
     }
+
+    public function doLikes(Idea $idea) {
+        return $this->likes()->where('idea_id', $idea->id)->exists();
+    }
 }

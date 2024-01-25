@@ -8,6 +8,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\IdeaLikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,6 @@ Route::post('/users/{user}/follow', [FollowerController::class, 'follow'])->midd
 Route::post('/users/{user}/unfollow', [FollowerController::class, 'unfollow'])->middleware('auth')->name('users.unfollow');
 
 /* likes route */
-Route::post('/ideas/{idea}/like', [FollowerController::class, 'like'])->middleware('auth')->name('ideas.like');
+Route::post('/ideas/{idea}/like', [IdeaLikeController::class, 'like'])->middleware('auth')->name('ideas.like');
 
-Route::post('/ideas/{idea}/unlike', [FollowerController::class, 'unlike'])->middleware('auth')->name('ideas.unlike');
+Route::post('/ideas/{idea}/unlike', [IdeaLikeController::class, 'unlike'])->middleware('auth')->name('ideas.unlike');
