@@ -82,6 +82,4 @@ class User extends Authenticatable
     public function do_likes(Idea $idea) {
         return $this->likes()->where('idea_id', $idea->id)->exists();
     }
-
-
 }

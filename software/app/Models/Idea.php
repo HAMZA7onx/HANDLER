@@ -32,5 +32,5 @@ class Idea extends Model
         return $this->belongsToMany(User::class, 'idea_like', 'idea_id', 'user_id')->withTimestamps();
     }
 
-
 }
+

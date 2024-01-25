@@ -26,7 +26,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $ideas = $user->ideas()->orderBy('created_at', 'DESC')->paginate(1);
-        return view('users.edit', compact('user', 'ideas'));
+        return view('users.shared.edit', compact('user', 'ideas'));
     }
 
     /**
