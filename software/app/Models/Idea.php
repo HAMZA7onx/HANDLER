@@ -14,6 +14,12 @@ class Idea extends Model
     ];
     use HasFactory;
 
+    /* Eager Loading */
+    protected $with = [
+        'comments',
+        'user'
+    ];
+
     public function comments() {
         return $this->hasMany(Comment::class, 'idea_id', 'id')->orderBy('created_at', 'DESC');
     }

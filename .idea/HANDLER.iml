@@ -8,6 +8,11 @@
       <sourceFolder url="file://$MODULE_DIR$/software/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/software/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/software/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/software/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/software/vendor/barryvdh/laravel-debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/software/vendor/maximebf/debugbar" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
