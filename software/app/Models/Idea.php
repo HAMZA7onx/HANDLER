@@ -19,7 +19,7 @@ class Idea extends Model
         'comments',
         'user'
     ];
-
+ 
     public function comments() {
         return $this->hasMany(Comment::class, 'idea_id', 'id')->orderBy('created_at', 'DESC');
     }
