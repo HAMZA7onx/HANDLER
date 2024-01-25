@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -17,7 +17,7 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'bio' => 'required|min:20|max:200'
+            'bio' => 'required|min:5|max:200'
         ]);
 
         $validated['password'] = bcrypt($validated['password']);
@@ -26,7 +26,9 @@ class AuthController extends Controller
             $imagePath = request()->file('image')->store('images', 'public');
             $validated['image'] = $imagePath;
         }
-        User::create($validated);
+        $newUser = User::create($validated);
+
+        Mail::to($newUser->email)->send(new WelcomeEmail($newUser));
 
         return redirect()->route('dashboard')->with('success', 'Rigister Has been successfully');
     }
