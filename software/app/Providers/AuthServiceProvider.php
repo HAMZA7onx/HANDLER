@@ -22,8 +22,16 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Gate => Permission | Simple Role
+
+        // Role
         Gate::define('admin', function (User $user) : bool {
             return (bool) $user->is_admin;
         });
+//
+//        // Permission
+//        Gate::define('idea.delete', function (User $user) : bool {
+//            return
+//        })
     }
 }
